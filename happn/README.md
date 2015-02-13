@@ -25,16 +25,14 @@ optional arguments:
 
 ####To Do
 
-*Fixes
-**Generated map .html should be named <uid>.html
-
-*Features
-**Multilateration
-**Facebook Auth
-
-*Other
-**Document all functions
-**Finish README
+* Fixes
+	* Generated map .html should be named <uid>.html
+* Features
+	* Multilateration
+	* Facebook Auth
+* Other
+	* Document all functions
+	* Finish README
 
 
 ##Happn Vuln Notes
