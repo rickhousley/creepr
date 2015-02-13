@@ -1,5 +1,9 @@
 #Happn
-
+##Files
+* README.md	- this
+* log.log 	- example log of sybilSupriseDate.py after being run
+* sybilSupriseDate	- Main python script for locating a user
+* tokens	- file containing a list of Facebook tokens (should be stale, dont bother)
 ##sybilSupriseDate.py
 
 ####Command Line Arguments
@@ -30,6 +34,7 @@ optional arguments:
 * Features
 	* Multilateration
 	* Facebook Auth
+	* Extended Tracking
 * Other
 	* Document all functions
 	* Finish README
