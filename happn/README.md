@@ -23,6 +23,13 @@ optional arguments:
   --mapping             Enable mapping of sybil placement
 ```
 
+Sample Run:
+```
+  python sybilSupriseDate.py --fbTokenFile tokens --userID 1346023834
+```
+
+click [here](https://www.facebook.com/dialog/oauth?client_id=464891386855067&redirect_uri=https://www.facebook.com/connect/login_success.html&scope=basic_info,email,public_profile,user_about_me,user_activities,user_birthday,user_education_history,user_friends,user_interests,user_likes,user_location,user_photos,user_relationship_details&response_type=token) to get Facebook token
+
 ####Design Explanation
 
 ####Additional notes
@@ -35,6 +42,7 @@ optional arguments:
 	* Multilateration
 	* Facebook Auth
 	* Extended Tracking
+  * Add HTTP Status code interpretations
 * Other
 	* Document all functions
 	* Finish README
