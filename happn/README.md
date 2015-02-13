@@ -1,8 +1,8 @@
 #Happn
 
-###sybilSupriseDate.py
+##sybilSupriseDate.py
 
-#####Command Line Arguments
+####Command Line Arguments
 ```
 usage: sybilSupriseDate.py [-h] --fbTokenFile FBTOKENFILE --userID USERID
                            [--cLat CLAT] [--cLon CLON] [--radius RADIUS]
@@ -19,10 +19,23 @@ optional arguments:
   --mapping             Enable mapping of sybil placement
 ```
 
-#####Design Explanation
+####Design Explanation
 
-#####Additional notes
+####Additional notes
 
-###Happn Vuln Notes
-#####Legacy API Leak
+####To Do
+
+#####Fixes
++Generated map .html should be named <uid>.html
+
+#####Features
++Multilateration
++Facebook Auth
+
+#####Other
++Document all functions
+
+
+##Happn Vuln Notes
+####Legacy API Leak
 
