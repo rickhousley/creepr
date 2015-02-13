@@ -3,6 +3,7 @@
 ###sybilSupriseDate.py
 
 #####Command Line Arguments
+```
 usage: sybilSupriseDate.py [-h] --fbTokenFile FBTOKENFILE --userID USERID
                            [--cLat CLAT] [--cLon CLON] [--radius RADIUS]
                            [--mapping]
@@ -16,7 +17,7 @@ optional arguments:
   --cLon CLON           Centroid longitude
   --radius RADIUS       Radius of sybils from centroid
   --mapping             Enable mapping of sybil placement
-
+```
 
 #####Design Explanation
 
