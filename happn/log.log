@@ -1,0 +1,9 @@
+DEBUG:root:Logger initiated
+INFO:root:2 tokens loaded from file
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+WARNING:root:Error creating connection to Happn server
+WARNING:root:Error creating sybil, moving on to next token
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+WARNING:root:Error creating connection to Happn server
+WARNING:root:Error creating sybil, moving on to next token
+WARNING:root:No Sybils to work with, exiting
