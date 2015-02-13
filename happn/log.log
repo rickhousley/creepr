@@ -1,9 +1,73 @@
-DEBUG:root:Logger initiated
-INFO:root:2 tokens loaded from file
+INFO:root:--------------------Logger Initiated--------------------
+INFO:root:2 Facebook tokens loaded from file
 INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
-WARNING:root:Error creating connection to Happn server
-WARNING:root:Error creating sybil, moving on to next token
+INFO:root:Fetched Happn OAuth token:, 94d95fad897d203361e4ddc65734239202
+INFO:root:Sybil Generated. ID: 1830653747
 INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
-WARNING:root:Error creating connection to Happn server
-WARNING:root:Error creating sybil, moving on to next token
-WARNING:root:No Sybils to work with, exiting
+INFO:root:Fetched Happn OAuth token:, 25c024da3c8aa2a313b3219a72ff242302
+INFO:root:Sybil Generated. ID: 1847725971
+INFO:root:Completed sybil generation
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Updated sybil activity
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Device Set
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+WARNING:root:Server denied request for position change: 429
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+WARNING:root:Server denied request for user distance: 403
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Updated sybil activity
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Device Set
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+WARNING:root:Server denied request for position change: 429
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+WARNING:root:Server denied request for user distance: 403
+INFO:root:--------------------Logger Initiated--------------------
+INFO:root:2 Facebook tokens loaded from file
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Fetched Happn OAuth token:, 12804eb0fb3089a687d07577014d85d602
+INFO:root:Sybil Generated. ID: 1830653747
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Fetched Happn OAuth token:, c38f658d12048276a7a758af81c25e9b02
+INFO:root:Sybil Generated. ID: 1847725971
+INFO:root:Completed sybil generation
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Updated sybil activity
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Device Set
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+WARNING:root:Server denied request for position change: 429
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Updated sybil activity
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Device Set
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+WARNING:root:Server denied request for position change: 429
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:--------------------Logger Initiated--------------------
+INFO:root:2 Facebook tokens loaded from file
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Fetched Happn OAuth token:, bedf968d98e2ace00f53dcd05abc094a02
+INFO:root:Sybil Generated. ID: 1830653747
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Fetched Happn OAuth token:, 359e78d4c4004d5af689bee903f3eec602
+INFO:root:Sybil Generated. ID: 1847725971
+INFO:root:Completed sybil generation
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Updated sybil activity
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Device Set
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+WARNING:root:Server denied request for position change: 429
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Sybil 999 m from target
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Updated sybil activity
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Device Set
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+WARNING:root:Server denied request for position change: 429
+INFO:urllib3.connectionpool:Starting new HTTPS connection (1): api.happn.fr
+INFO:root:Sybil 999 m from target
