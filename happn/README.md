@@ -31,7 +31,31 @@ Sample Run:
 click [here](https://www.facebook.com/dialog/oauth?client_id=464891386855067&redirect_uri=https://www.facebook.com/connect/login_success.html&scope=basic_info,email,public_profile,user_about_me,user_activities,user_birthday,user_education_history,user_friends,user_interests,user_likes,user_location,user_photos,user_relationship_details&response_type=token) to get Facebook token
 
 ####Design Explanation
+A user's location can be determined by spawning a number of fake "Sybils" (users)
 
+__Program Flow:__
+```
+        Load Facebook Tokens
+                |
+          Generate Sybils
+                |
+  Calculate Locations around Centroid
+                |
+          For each Sybil
+                |
+        1. Update Activity
+                |
+          2. Set Device
+                |
+  3. Set Location around Centrodi
+                |
+          4. Get Distance
+                |
+    Multilateration Calculation  _Not yet completed_
+                |
+  Map Sybil Placement and Target
+
+```
 ####Additional notes
 
 ####To Do
