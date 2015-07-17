@@ -1,7 +1,0 @@
-db/
-tokens
-log.log
-dist/
-happn.egg-info/
-build/
-*.pyc
