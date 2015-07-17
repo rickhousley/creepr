@@ -47,17 +47,17 @@ class User:
 			:param longitude Longitude to position the User
 		"""
 		self.fbtoken 			= fbtoken				
-		self.oauth, self.id 	= self.getOAuth()
+		self.oauth, self.id 	= self.get_oauth()
 		
 		if (latitude and Longitude) is None:
 			self.lat = None
 			self.lon = None
 		else:
-			self.setPosition(latitude, longitude)		
+			self.set_position(latitude, longitude)		
 		
 		logging.info('Happn User Generated. ID:	%s', self.id)
 
-	def setPosition(self, latitude, longitude):
+	def set_position(self, latitude, longitude):
 		""" Set the position of the user using Happn's API 
 			:param latitude Latitude to position the User
 			:param longitude Longitude to position the User
@@ -97,7 +97,7 @@ class User:
 	 		raise HTTP_MethodError(httpErrors[r.status_code])
 
 
-	def setDevice(self):
+	def set_device(self):
 		""" Set device, necessary for updating position
 			:TODO Add params for settings
 		"""
@@ -133,8 +133,28 @@ class User:
 	 		logging.warning('Server denied request for device set change: %d', r.status_code)
 	 		raise HTTP_MethodError(httpErrors[r.status_code])
 
+	def set_settings(self, settings):
+		h=headers
+		h.update({
+		  'Authorization'	: 'OAuth="'+ self.oauth + '"',
+	 	  'Content-Length'	:  1089, #@TODO figure out length calculation
+	 	  'Content-Type'	: 'application/json'})
 
-	def getDistance(self, userID):
+		# Happn preferences
+		url = 'https://api.happn.fr/api/users/' + self.id
+	 	try:
+	 		r = requests.put(url, headers=h, data = json.dumps(settings))
+	 	except:
+			raise HTTP_MethodError('Error Connecting to Happn Server')
+
+	 	if r.status_code == 200: #200 = 'OK'	 			 		
+	 		logging.info('Updated Settings')	 		
+	 	else:
+	 		# Unable to fetch distance
+	 		raise HTTP_MethodError(httpErrors[r.status_code])		
+
+
+	def get_distance(self, userID):
 		""" Fetches the distance from another user
 			:param userID User ID of target user.
 		"""
@@ -161,33 +181,7 @@ class User:
 			raise HTTP_MethodError(httpErrors[r.status_code])		
 
 
-	def updateActivity(self):
-		""" Updates User activity """
-
-		# Create and send HTTP PUT to Happn server
-		h = headers
-		h.update({
-			'Authorization' : 'OAuth="'+ self.oauth + '"',
-			'Content-Type'  : 'application/x-www-form-urlencoded; charset=UTF-8',
-			'Content-Length': '20'
-		})
-		payload = {
-			'update_activity' :  'true'
-		}
-		url = 'https://api.happn.fr/api/users/'+self.id
-	 	try:
-	 		r = requests.put(url, headers=h, data = payload)
-	 	except:
-			raise HTTP_MethodError('Error Connecting to Happn Server')
-
-	 	if r.status_code == 200: #200 = 'OK'	 			 		
-	 		logging.info('Updated User activity')
-	 	else:
-	 		# Unable to fetch distance
-	 		raise HTTP_MethodError(httpErrors[r.status_code])
-
- 		
-	def getOAuth(self):
+	def get_oauth(self):
 		""" Gets the OAuth tokens using Happn's API """
 		
 		# Create and send HTTP POST to Happn server
@@ -221,7 +215,8 @@ class User:
 			raise HTTP_MethodError(httpErrors[r.status_code])
 
 
-	def getUserInfo(self, userID):
+	#@TODO Update with more query fields (last name, birthday, etc)
+	def get_user_info(self, userID):
 		""" Fetches userInfo
 			:param userID User ID of target user.
 
@@ -248,9 +243,68 @@ class User:
 
 		# Check if successful
 	 	if r.status_code == 200: #200 = 'OK'	 		
-	 		return r.json()['data']
+	 		# Load response into a python dictionary, syntax seems redundant
+	 		return json.loads(json.dumps(r.json()['data'], sort_keys=True, indent=4, separators=(',', ': ')))
 	 	else:
-			raise HTTP_MethodError(httpErrors[r.status_code])
+			raise HTTP_MethodError(httpErrors[r.status_code])	
+
+
+	def get_recommendations(self, limit=16, offset=0):
+		""" Get reccomendations from Happn server 
+	 		:param limit Number of reccomendations to recieve
+	 		:param offset Offset index for reccomendation list
+	 	"""
+
+		# Create and send HTTP Get to Happn server
+	 	h={ #For some reason header update doesnt work
+		 	'http.useragent' : 'Happn/1.0 AndroidSDK/0',
+			'Authorization'	 : 'OAuth="' + self.oauth+'"',
+			'Content-Type'	 : 'application/json',
+			'User-Agent'	 : 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; SCH-I535 Build/KOT49H)',
+			'Host'			 : 'api.happn.fr',
+			'Connection'	 : 'Keep-Alive',
+			'Accept-Encoding': 'gzip'
+	 	} 
+		query = '{"types":"468","limit":'+str(limit)+',"offset":'+str(offset)+',"fields":"id,modification_date,notification_type,nb_times,notifier.fields(id,job,is_accepted,workplace,my_relation,distance,gender,my_conversation,is_charmed,nb_photos,first_name,age,profiles.mode(1).width(360).height(640).fields(width,height,mode,url))"}'
+		url = 'https://api.happn.fr/api/users/' + self.id +'/notifications/?query=' + urllib2.quote(query)
+
+		print url
+
+	 	try:
+	 		r = requests.get(url, headers=h)
+	 	except:		
+			raise HTTP_MethodError('Error Connecting to Happn Server')
+
+	 	if r.status_code == 200: #200 = 'OK'	 		
+	 		return json.loads(json.dumps(r.json()['data'], sort_keys=True, indent=4, separators=(',', ': ')))
+	 	else:
+			raise HTTP_MethodError(httpErrors[r.status_code])		
+
+
+	def update_activity(self):
+		""" Updates User activity """
+
+		# Create and send HTTP PUT to Happn server
+		h = headers
+		h.update({
+			'Authorization' : 'OAuth="'+ self.oauth + '"',
+			'Content-Type'  : 'application/x-www-form-urlencoded; charset=UTF-8',
+			'Content-Length': '20'
+		})
+		payload = {
+			'update_activity' :  'true'
+		}
+		url = 'https://api.happn.fr/api/users/'+self.id
+	 	try:
+	 		r = requests.put(url, headers=h, data = payload)
+	 	except:
+			raise HTTP_MethodError('Error Connecting to Happn Server')
+
+	 	if r.status_code == 200: #200 = 'OK'	 			 		
+	 		logging.info('Updated User activity')
+	 	else:
+	 		# Unable to fetch distance
+	 		raise HTTP_MethodError(httpErrors[r.status_code])
 
 
 class HTTP_MethodError(Exception):
