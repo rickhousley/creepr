@@ -65,6 +65,6 @@ def main(args):
 			mymap.addradpoint(sybil.lat, sybil.lon, sybil.distance, "#000000")
 		
 		
-		mymap.draw(str(args.userID +'_map.html') 
+		mymap.draw(str(args.userID +'_map.html')) 
 		url = 'mymap.draw.html'
 		webbrowser.open_new_tab(url) 
